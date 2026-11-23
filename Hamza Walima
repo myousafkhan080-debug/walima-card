@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamza &amp; Amna — Walima Invitation</title>
+
+  <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans, Amiri, Noto Nastaliq Urdu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            courtyard: {
+              cream: '#F7F1E7',
+              sandstone: '#EDE1CE',
+              ivory: '#FAF6EF',
+              border: '#DFD3C3',
+            },
+            wine: {
+              DEFAULT: '#5A1721',
+              deep: '#430F17',
+            },
+            gold: {
+              antique: '#C59F52',
+              honey: '#E6C579',
+              pill: '#F3DC9C',
+              bronze: '#9E7B2F',
+            },
+            taupe: {
+              mauve: '#8B736E',
+              hover: '#76605B',
+            },
+            charcoal: {
+              warm: '#3A2B28',
+              soft: '#6E5A56',
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            arabic: ['"Amiri"', 'serif'],
+            urdu: ['"Noto Nastaliq Urdu"', '"Amiri"', 'serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg-cream: #F7F1E7;
+      --bg-sandstone: #EDE1CE;
+      --wine-primary: #5A1721;
+      --gold-antique: #C59F52;
+      --gold-bronze: #9E7B2F;
+      --gold-honey: #E6C579;
+      --mauve-taupe: #8B736E;
+      --charcoal-warm: #3A2B28;
+    }
+
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      background-color: #F7F1E7;
+      color: var(--charcoal-warm);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body.gate-locked {
+      overflow: hidden;
+      height: 100dvh;
+    }
+
+    /* ===================================================================== */
+    /* 1. FULL-SCREEN HIGH-RES BADSHAHI MASJID, LAHORE GOLDEN SUNSET LAYER   */
+    /* ===================================================================== */
+    #badshahi-backdrop {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      background: linear-gradient(180deg, #F7F1E7 0%, #EDE1CE 50%, #5A1721 100%);
+    }
+
+    @keyframes slowArchitecturalZoom {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+
+    .badshahi-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 36%;
+      animation: slowArchitecturalZoom 25s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    #sunset-atmospheric-wash {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(247, 241, 231, 0.76) 0%,
+        rgba(237, 225, 206, 0.66) 48%,
+        rgba(90, 23, 33, 0.62) 100%
+      );
+    }
+
+    /* ===================================================================== */
+    /* 2. OPENING 3D EMBOSSED MUGHAL DOUBLE-DOOR & PULL-DOWN TASSEL GATE     */
+    /* ===================================================================== */
+    #doorGate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      perspective: 1800px;
+      display: flex;
+      overflow: hidden;
+      user-select: none;
+      touch-action: none;
+      background: radial-gradient(circle at 50% 48%, rgba(255, 245, 218, 0.25), rgba(45, 16, 20, 0.55));
+      transition: opacity 0.65s ease;
+    }
+
+    #doorGate.gate-fading {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .embossed-door-leaf {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(180deg, #F5EFE6 0%, #EFE6D8 52%, #EAE0D2 100%);
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      transition: transform 1.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 1.35s ease;
+      overflow: hidden;
+    }
+
+    #doorLeft {
+      transform-origin: left center;
+      box-shadow:
+        inset -2px 0 3px rgba(130, 108, 78, 0.35),
+        inset -16px 0 30px rgba(164, 144, 116, 0.14);
+    }
+
+    #doorRight {
+      transform-origin: right center;
+      box-shadow:
+        inset 1.5px 0 2px rgba(255, 253, 248, 0.95),
+        inset 16px 0 30px rgba(164, 144, 116, 0.12);
+    }
+
+    #doorGate.doors-open #doorLeft {
+      transform: rotateY(-115deg);
+      box-shadow: 28px 0 60px rgba(42, 14, 18, 0.42);
+    }
+
+    #doorGate.doors-open #doorRight {
+      transform: rotateY(115deg);
+      box-shadow: -28px 0 60px rgba(42, 14, 18, 0.42);
+    }
+
+    /* Warm Golden Light Seam Shining Down Center Crack as Doors Unlock */
+    #goldenSeamBeam {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      transform: translateX(-50%) scaleX(0);
+      background: linear-gradient(180deg, rgba(255, 248, 224, 0.25) 0%, rgba(255, 236, 179, 0.96) 50%, rgba(255, 248, 224, 0.25) 100%);
+      box-shadow: 0 0 42px 20px rgba(230, 197, 121, 0.88), 0 0 90px 40px rgba(255, 249, 230, 0.65);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 15;
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+    }
+
+    #doorGate.seam-glow #goldenSeamBeam {
+      opacity: 1;
+      transform: translateX(-50%) scaleX(16);
+    }
+
+    @keyframes tasselBreezeSway {
+      0%, 100% { transform: rotate(-2.2deg); }
+      50% { transform: rotate(2.2deg); }
+    }
+
+    #tasselPendulum {
+      transform-origin: 0px 10px;
+      animation: tasselBreezeSway 3.6s ease-in-out infinite;
+    }
+
+    .tassel-dragging #tasselPendulum {
+      animation: none;
+    }
+
+    @keyframes gentlePullArrow {
+      0%, 100% { transform: translateY(0); opacity: 0.75; }
+      50% { transform: translateY(4px); opacity: 1; }
+    }
+
+    .pull-cue-arrow {
+      animation: gentlePullArrow 1.8s ease-in-out infinite;
+    }
+
+    /* ===================================================================== */
+    /* 3. SUNSET COURTYARD FROSTED GLASSMORPHISM & EDITORIAL TYPOGRAPHY      */
+    /* ===================================================================== */
+    .courtyard-cream-card {
+      background: rgba(250, 246, 239, 0.86);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid #DFD3C3;
+      border-radius: 22px;
+      box-shadow: 0 18px 44px -14px rgba(58, 43, 40, 0.16);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .courtyard-cream-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(197, 159, 82, 0.72);
+      box-shadow: 0 22px 50px -14px rgba(90, 23, 33, 0.2);
+    }
+
+    .courtyard-sandstone-band {
+      background: rgba(237, 225, 206, 0.84);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid #DFD3C3;
+      border-radius: 24px;
+      box-shadow: 0 18px 44px -14px rgba(58, 43, 40, 0.15);
+    }
+
+    /* Arch-Topped Countdown Pillar */
+    .countdown-arch-pillar {
+      background: rgba(250, 246, 239, 0.86);
+      border: 1px solid #DFD3C3;
+      border-radius: 999px 999px 18px 18px;
+      box-shadow: 0 10px 24px -10px rgba(90, 23, 33, 0.14);
+    }
+
+    .courtyard-wine-footer {
+      background: rgba(90, 23, 33, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: #F7F1E7;
+      border-top: 1px solid rgba(230, 197, 121, 0.35);
+    }
+
+    /* Gold Hairline Section Eyebrow */
+    .noora-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-bronze);
+    }
+
+    .noora-eyebrow::before,
+    .noora-eyebrow::after {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background-color: var(--gold-antique);
+      flex-shrink: 0;
+    }
+
+    .noora-eyebrow-light {
+      color: var(--gold-honey);
+    }
+
+    .noora-eyebrow-light::before,
+    .noora-eyebrow-light::after {
+      background-color: var(--gold-honey);
+      opacity: 0.72;
+    }
+
+    /* Urdu Language Mode Support */
+    body.urdu-mode .bilingual {
+      font-family: 'Noto Nastaliq Urdu', 'Amiri', serif !important;
+      line-height: 2.25 !important;
+      letter-spacing: 0 !important;
+      text-transform: none !important;
+    }
+
+    body.urdu-mode .noora-eyebrow {
+      font-family: 'Noto Nastaliq Urdu', 'Amiri', serif !important;
+      font-size: 0.95rem !important;
+      letter-spacing: 0 !important;
+      text-transform: none !important;
+      line-height: 2.05 !important;
+    }
+
+    /* Smooth Scroll Reveal */
+    .editorial-reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .editorial-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="gate-locked text-charcoal-warm antialiased selection:bg-wine selection:text-courtyard-cream">
+
+  <!-- ===================================================================== -->
+  <!-- 1. FULL-SCREEN HIGH-RES BADSHAHI MASJID, LAHORE SUNSET PHOTOGRAPH     -->
+  <!-- ===================================================================== -->
+  <div id="badshahi-backdrop" aria-hidden="true">
+    <img
+      id="badshahi-photo-el"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Badshahi_Mosque_front_picture.jpg/1600px-Badshahi_Mosque_front_picture.jpg"
+      alt="Badshahi Masjid, Lahore, Pakistan at Golden Sunset"
+      class="badshahi-photo"
+      onerror="handleBadshahiPhotoFallback(this)"
+    />
+    <div id="sunset-atmospheric-wash"></div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 2. DRIFTING BLUSH ROSE, WARM GOLD & SOFT CREAM OVAL PETALS CANVAS     -->
+  <!-- ===================================================================== -->
+  <canvas id="confetti-petals-canvas" class="fixed inset-0 pointer-events-none z-30"></canvas>
+
+  <!-- ===================================================================== -->
+  <!-- 3. FLOATING TOP CONTROLS (46px MAUVE-TAUPE #8B736E PILLS, z-index: 50) -->
+  <!-- ===================================================================== -->
+  <div class="fixed top-4 left-4 right-4 z-50 flex items-center justify-between pointer-events-none">
+    <!-- Top-Left: Bilingual English / Urdu Toggle -->
+    <button
+      id="lang-toggle-btn"
+      type="button"
+      aria-label="Switch Language between English and Urdu"
+      class="pointer-events-auto w-[46px] h-[46px] rounded-full bg-taupe-mauve hover:bg-taupe-hover active:scale-95 text-courtyard-ivory shadow-lg flex items-center justify-center transition-all duration-200 cursor-pointer border border-white/25"
+    >
+      <span id="lang-toggle-label" class="font-arabic text-[15px] leading-none">اردو</span>
+    </button>
+
+    <!-- Top-Right: Web Audio Santoor Ambient Sound Toggle -->
+    <button
+      id="sound-toggle-btn"
+      type="button"
+      aria-label="Toggle Ambient Santoor Music"
+      class="pointer-events-auto w-[46px] h-[46px] rounded-full bg-taupe-mauve hover:bg-taupe-hover active:scale-95 text-courtyard-ivory shadow-lg flex items-center justify-center transition-all duration-200 cursor-pointer border border-white/25"
+    >
+      <!-- Speaker On Icon -->
+      <svg id="icon-sound-on" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.85" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H3v6h3l5 4V5z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.54 8.46a5 5 0 010 7.07M18.36 5.64a9 9 0 010 12.73" />
+      </svg>
+      <!-- Speaker Muted Icon -->
+      <svg id="icon-sound-off" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.85" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H3v6h3l5 4V5z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M22 9l-6 6M16 9l6 6" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 4. SLEEK TOAST CONFIRMATION                                            -->
+  <!-- ===================================================================== -->
+  <div
+    id="editorial-toast"
+    role="status"
+    aria-live="polite"
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-full bg-wine text-courtyard-ivory border border-gold-honey/60 shadow-2xl font-sans text-xs font-medium tracking-wider opacity-0 translate-y-4 pointer-events-none transition-all duration-300 flex items-center gap-2 whitespace-nowrap"
+  >
+    <span class="w-2 h-2 rounded-full bg-gold-honey"></span>
+    <span id="editorial-toast-text" class="bilingual">Copied to clipboard</span>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 5. OPENING 3D EMBOSSED MUGHAL DOUBLE-DOOR & PULL-DOWN TASSEL GATE     -->
+  <!-- ===================================================================== -->
+  <div id="doorGate" role="dialog" aria-modal="true" aria-label="Hamza & Amna Walima Invitation Cover">
+
+    <!-- Warm Golden Light Seam Down Center Crack -->
+    <div id="goldenSeamBeam" aria-hidden="true"></div>
+
+    <!-- LEFT 3D EMBOSSED MUGHAL DOOR (#doorLeft) -->
+    <div id="doorLeft" class="embossed-door-leaf">
+      <svg class="w-full h-full block" viewBox="0 0 300 900" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+        <defs>
+          <!-- Dual-Shadow 3D Bas-Relief Emboss Filter -->
+          <filter id="embossReliefLeft" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="-1.6" dy="-1.6" stdDeviation="1.1" flood-color="#FFFFFF" flood-opacity="0.95" result="highlight" />
+            <feDropShadow dx="2.2" dy="2.5" stdDeviation="1.6" flood-color="#A89378" flood-opacity="0.58" result="shadow" />
+            <feMerge>
+              <feMergeNode in="shadow" />
+              <feMergeNode in="highlight" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          <!-- Antique Metallic Gold Foil Gradient -->
+          <linearGradient id="goldFoilLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#9E7B2F" />
+            <stop offset="30%" stop-color="#DFC078" />
+            <stop offset="55%" stop-color="#FFF0BC" />
+            <stop offset="80%" stop-color="#C59F52" />
+            <stop offset="100%" stop-color="#8C6A23" />
+          </linearGradient>
+
+          <!-- Cotton Cardstock Gradient -->
+          <linearGradient id="cardStockLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#F6F0E6" />
+            <stop offset="55%" stop-color="#EFE6D8" />
+            <stop offset="100%" stop-color="#E7DDD0" />
+          </linearGradient>
+        </defs>
+
+        <!-- Cotton-Ivory Cardstock Base -->
+        <rect x="0" y="0" width="300" height="900" fill="url(#cardStockLeft)" />
+
+        <!-- Subtle Recessed Panel Frame -->
+        <rect x="16" y="18" width="276" height="864" rx="8" fill="none" stroke="#DFD3C3" stroke-width="1.2" />
+
+        <!-- Vertical Antique Gold Floral Border Along Outer Left Edge (x = 38) -->
+        <g stroke="url(#goldFoilLeft)" fill="none" stroke-linecap="round">
+          <line x1="26" y1="30" x2="26" y2="870" stroke-width="1" opacity="0.65" />
+          <line x1="50" y1="30" x2="50" y2="870" stroke-width="1" opacity="0.65" />
+          <path d="M 38 40 C 31 85, 45 130, 38 175 C 31 220, 45 265, 38 310 C 31 355, 45 400, 38 445 C 31 490, 45 535, 38 580 C 31 625, 45 670, 38 715 C 31 760, 45 805, 38 860" stroke-width="1.35" />
+          <!-- Gold Border Lotus Leaves & Buds -->
+          <g fill="url(#goldFoilLeft)" stroke="none">
+            <path d="M 38 95 C 29 88, 29 76, 38 70 C 47 76, 47 88, 38 95 Z" opacity="0.85" />
+            <path d="M 38 185 C 29 178, 29 166, 38 160 C 47 166, 47 178, 38 185 Z" opacity="0.85" />
+            <path d="M 38 275 C 29 268, 29 256, 38 250 C 47 256, 47 268, 38 275 Z" opacity="0.85" />
+            <path d="M 38 365 C 29 358, 29 346, 38 340 C 47 346, 47 358, 38 365 Z" opacity="0.85" />
+            <path d="M 38 545 C 29 538, 29 526, 38 520 C 47 526, 47 538, 38 545 Z" opacity="0.85" />
+            <path d="M 38 635 C 29 628, 29 616, 38 610 C 47 616, 47 628, 38 635 Z" opacity="0.85" />
+            <path d="M 38 725 C 29 718, 29 706, 38 700 C 47 706, 47 718, 38 725 Z" opacity="0.85" />
+            <path d="M 38 815 C 29 808, 29 796, 38 790 C 47 796, 47 808, 38 815 Z" opacity="0.85" />
+          </g>
+        </g>
+
+        <!-- 3D BAS-RELIEF FLORAL PEONIES, LOTUS MEDALLIONS & SCROLLING VINES -->
+        <g filter="url(#embossReliefLeft)" fill="#F3ECE1" stroke="#E5DACB" stroke-width="1.1" stroke-linejoin="round">
+          <!-- Upper Spandrel Scrolling Vine -->
+          <path d="M 75 110 C 115 70, 175 62, 235 45" fill="none" stroke-width="3.2" />
+          <path d="M 110 85 C 95 62, 118 46, 134 66 C 128 82, 118 86, 110 85 Z" />
+          <path d="M 168 68 C 154 44, 178 32, 192 52 C 186 66, 176 70, 168 68 Z" />
+
+          <!-- Upper Arch Floral Medallion & Peony -->
+          <path d="M 288 380 C 245 335, 225 270, 240 205 C 248 172, 265 152, 282 140" fill="none" stroke-width="3.6" />
+          <!-- Embossed Peony Blossom 1 -->
+          <g transform="translate(218, 235)">
+            <ellipse cx="0" cy="-18" rx="10" ry="18" />
+            <ellipse cx="17" cy="-6" rx="10" ry="18" transform="rotate(72)" />
+            <ellipse cx="11" cy="15" rx="10" ry="18" transform="rotate(144)" />
+            <ellipse cx="-11" cy="15" rx="10" ry="18" transform="rotate(216)" />
+            <ellipse cx="-17" cy="-6" rx="10" ry="18" transform="rotate(288)" />
+            <circle cx="0" cy="0" r="8" fill="#EFE6D8" />
+          </g>
+          <!-- Embossed Acanthus Leaves -->
+          <path d="M 244 295 C 205 288, 182 266, 194 248 C 214 252, 234 272, 244 295 Z" />
+          <path d="M 255 340 C 218 345, 192 328, 200 308 C 222 308, 242 322, 255 340 Z" />
+
+          <!-- Mid-Upper Lotus Medallion -->
+          <g transform="translate(152, 330)">
+            <path d="M 0 -30 C 12 -14, 12 10, 0 24 C -12 10, -12 -14, 0 -30 Z" />
+            <path d="M -22 -18 C -6 -16, 4 2, -2 22 C -18 14, -26 -4, -22 -18 Z" />
+            <path d="M 22 -18 C 6 -16, -4 2, 2 22 C 18 14, 26 -4, 22 -18 Z" />
+            <ellipse cx="0" cy="24" rx="16" ry="5" />
+          </g>
+
+          <!-- Lower Arch Scrolling Vine & Peonies -->
+          <path d="M 285 495 C 235 535, 205 605, 215 685 C 222 740, 248 790, 282 830" fill="none" stroke-width="3.6" />
+          <!-- Embossed Peony Blossom 2 -->
+          <g transform="translate(182, 585)">
+            <ellipse cx="0" cy="-20" rx="11" ry="20" />
+            <ellipse cx="19" cy="-6" rx="11" ry="20" transform="rotate(72)" />
+            <ellipse cx="12" cy="16" rx="11" ry="20" transform="rotate(144)" />
+            <ellipse cx="-12" cy="16" rx="11" ry="20" transform="rotate(216)" />
+            <ellipse cx="-19" cy="-6" rx="11" ry="20" transform="rotate(288)" />
+            <circle cx="0" cy="0" r="9" fill="#EFE6D8" />
+          </g>
+          <!-- Embossed Leaves & Lotus Bud -->
+          <path d="M 222 535 C 182 522, 164 498, 180 482 C 202 492, 216 512, 222 535 Z" />
+          <path d="M 212 650 C 168 655, 146 634, 158 614 C 182 616, 202 632, 212 650 Z" />
+          <g transform="translate(162, 725) rotate(-18)">
+            <path d="M 0 -28 C 11 -12, 11 10, 0 22 C -11 10, -11 -12, 0 -28 Z" />
+            <path d="M -18 -14 C -4 -12, 4 4, -2 20 C -16 12, -22 -2, -18 -14 Z" />
+            <path d="M 18 -14 C 4 -12, -4 4, 2 20 C 16 12, 22 -2, 18 -14 Z" />
+          </g>
+          <path d="M 235 765 C 194 778, 174 762, 186 742 C 208 742, 226 752, 235 765 Z" />
+        </g>
+
+        <!-- SCALLOPED GOLD-TRIMMED MUGHAL ARCH (Left Half meeting Seam at x = 300) -->
+        <g fill="none">
+          <!-- Outer Scalloped Gold Arch -->
+          <path
+            d="M 68 880 L 68 360 C 68 315, 86 285, 102 260 C 102 232, 124 205, 146 190 C 152 162, 178 138, 206 128 C 218 102, 248 82, 276 74 C 288 64, 295 56, 300 48"
+            stroke="url(#goldFoilLeft)"
+            stroke-width="3.2"
+            stroke-linecap="round"
+          />
+          <!-- Inner Fine Gold Hairline Arch -->
+          <path
+            d="M 80 880 L 80 365 C 80 322, 96 294, 112 270 C 112 244, 132 218, 154 204 C 160 178, 184 154, 210 144 C 222 120, 250 100, 276 92 C 287 82, 294 74, 300 66"
+            stroke="url(#goldFoilLeft)"
+            stroke-width="1.25"
+            opacity="0.88"
+          />
+        </g>
+
+        <!-- Left Metallic Gold Lotus Bud at Top Arch Apex -->
+        <g transform="translate(274, 126) rotate(-14)" fill="url(#goldFoilLeft)">
+          <path d="M 0 -22 C 8 -10, 8 8, 0 18 C -8 8, -8 -10, 0 -22 Z" />
+          <path d="M -14 -10 C -4 -9, 3 3, -1 16 C -12 10, -17 -1, -14 -10 Z" opacity="0.92" />
+          <path d="M 14 -10 C 4 -9, -3 3, 1 16 C 12 10, 17 -1, 14 -10 Z" opacity="0.92" />
+          <ellipse cx="0" cy="18" rx="10" ry="3" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- RIGHT 3D EMBOSSED MUGHAL DOOR (#doorRight) -->
+    <div id="doorRight" class="embossed-door-leaf">
+      <svg class="w-full h-full block" viewBox="300 0 300 900" preserveAspectRatio="xMinYMid slice" aria-hidden="true">
+        <defs>
+          <!-- Dual-Shadow 3D Bas-Relief Emboss Filter -->
+          <filter id="embossReliefRight" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="-1.6" dy="-1.6" stdDeviation="1.1" flood-color="#FFFFFF" flood-opacity="0.95" result="highlight" />
+            <feDropShadow dx="2.2" dy="2.5" stdDeviation="1.6" flood-color="#A89378" flood-opacity="0.58" result="shadow" />
+            <feMerge>
+              <feMergeNode in="shadow" />
+              <feMergeNode in="highlight" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          <!-- Antique Metallic Gold Foil Gradient -->
+          <linearGradient id="goldFoilRight" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#9E7B2F" />
+            <stop offset="30%" stop-color="#DFC078" />
+            <stop offset="55%" stop-color="#FFF0BC" />
+            <stop offset="80%" stop-color="#C59F52" />
+            <stop offset="100%" stop-color="#8C6A23" />
+          </linearGradient>
+
+          <!-- Cotton Cardstock Gradient -->
+          <linearGradient id="cardStockRight" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#F6F0E6" />
+            <stop offset="55%" stop-color="#EFE6D8" />
+            <stop offset="100%" stop-color="#E7DDD0" />
+          </linearGradient>
+        </defs>
+
+        <!-- Cotton-Ivory Cardstock Base -->
+        <rect x="300" y="0" width="300" height="900" fill="url(#cardStockRight)" />
+
+        <!-- Subtle Recessed Panel Frame -->
+        <rect x="308" y="18" width="276" height="864" rx="8" fill="none" stroke="#DFD3C3" stroke-width="1.2" />
+
+        <!-- Vertical Antique Gold Floral Border Along Outer Right Edge (x = 562) -->
+        <g stroke="url(#goldFoilRight)" fill="none" stroke-linecap="round">
+          <line x1="550" y1="30" x2="550" y2="870" stroke-width="1" opacity="0.65" />
+          <line x1="574" y1="30" x2="574" y2="870" stroke-width="1" opacity="0.65" />
+          <path d="M 562 40 C 569 85, 555 130, 562 175 C 569 220, 555 265, 562 310 C 569 355, 555 400, 562 445 C 569 490, 555 535, 562 580 C 569 625, 555 670, 562 715 C 569 760, 555 805, 562 860" stroke-width="1.35" />
+          <g fill="url(#goldFoilRight)" stroke="none">
+            <path d="M 562 95 C 553 88, 553 76, 562 70 C 571 76, 571 88, 562 95 Z" opacity="0.85" />
+            <path d="M 562 185 C 553 178, 553 166, 562 160 C 571 166, 571 178, 562 185 Z" opacity="0.85" />
+            <path d="M 562 275 C 553 268, 553 256, 562 250 C 571 256, 571 268, 562 275 Z" opacity="0.85" />
+            <path d="M 562 365 C 553 358, 553 346, 562 340 C 571 346, 571 358, 562 365 Z" opacity="0.85" />
+            <path d="M 562 545 C 553 538, 553 526, 562 520 C 571 526, 571 538, 562 545 Z" opacity="0.85" />
+            <path d="M 562 635 C 553 628, 553 616, 562 610 C 571 616, 571 628, 562 635 Z" opacity="0.85" />
+            <path d="M 562 725 C 553 718, 553 706, 562 700 C 571 706, 571 718, 562 725 Z" opacity="0.85" />
+            <path d="M 562 815 C 553 808, 553 796, 562 790 C 571 796, 571 808, 562 815 Z" opacity="0.85" />
+          </g>
+        </g>
+
+        <!-- SYMMETRICAL 3D BAS-RELIEF FLORAL PEONIES, LOTUS MEDALLIONS & SCROLLING VINES -->
+        <g filter="url(#embossReliefRight)" fill="#F3ECE1" stroke="#E5DACB" stroke-width="1.1" stroke-linejoin="round">
+          <!-- Upper Spandrel Scrolling Vine -->
+          <path d="M 525 110 C 485 70, 425 62, 365 45" fill="none" stroke-width="3.2" />
+          <path d="M 490 85 C 505 62, 482 46, 466 66 C 472 82, 482 86, 490 85 Z" />
+          <path d="M 432 68 C 446 44, 422 32, 408 52 C 414 66, 424 70, 432 68 Z" />
+
+          <!-- Upper Arch Floral Medallion & Peony -->
+          <path d="M 312 380 C 355 335, 375 270, 360 205 C 352 172, 335 152, 318 140" fill="none" stroke-width="3.6" />
+          <!-- Embossed Peony Blossom 1 -->
+          <g transform="translate(382, 235)">
+            <ellipse cx="0" cy="-18" rx="10" ry="18" />
+            <ellipse cx="17" cy="-6" rx="10" ry="18" transform="rotate(72)" />
+            <ellipse cx="11" cy="15" rx="10" ry="18" transform="rotate(144)" />
+            <ellipse cx="-11" cy="15" rx="10" ry="18" transform="rotate(216)" />
+            <ellipse cx="-17" cy="-6" rx="10" ry="18" transform="rotate(288)" />
+            <circle cx="0" cy="0" r="8" fill="#EFE6D8" />
+          </g>
+          <!-- Embossed Acanthus Leaves -->
+          <path d="M 356 295 C 395 288, 418 266, 406 248 C 386 252, 366 272, 356 295 Z" />
+          <path d="M 345 340 C 382 345, 408 328, 400 308 C 378 308, 358 322, 345 340 Z" />
+
+          <!-- Mid-Upper Lotus Medallion -->
+          <g transform="translate(448, 330)">
+            <path d="M 0 -30 C 12 -14, 12 10, 0 24 C -12 10, -12 -14, 0 -30 Z" />
+            <path d="M -22 -18 C -6 -16, 4 2, -2 22 C -18 14, -26 -4, -22 -18 Z" />
+            <path d="M 22 -18 C 6 -16, -4 2, 2 22 C 18 14, 26 -4, 22 -18 Z" />
+            <ellipse cx="0" cy="24" rx="16" ry="5" />
+          </g>
+
+          <!-- Lower Arch Scrolling Vine & Peonies -->
+          <path d="M 315 495 C 365 535, 395 605, 385 685 C 378 740, 352 790, 318 830" fill="none" stroke-width="3.6" />
+          <!-- Embossed Peony Blossom 2 -->
+          <g transform="translate(418, 585)">
+            <ellipse cx="0" cy="-20" rx="11" ry="20" />
+            <ellipse cx="19" cy="-6" rx="11" ry="20" transform="rotate(72)" />
+            <ellipse cx="12" cy="16" rx="11" ry="20" transform="rotate(144)" />
+            <ellipse cx="-12" cy="16" rx="11" ry="20" transform="rotate(216)" />
+            <ellipse cx="-19" cy="-6" rx="11" ry="20" transform="rotate(288)" />
+            <circle cx="0" cy="0" r="9" fill="#EFE6D8" />
+          </g>
+          <!-- Embossed Leaves & Lotus Bud -->
+          <path d="M 378 535 C 418 522, 436 498, 420 482 C 398 492, 384 512, 378 535 Z" />
+          <path d="M 388 650 C 432 655, 454 634, 442 614 C 418 616, 398 632, 388 650 Z" />
+          <g transform="translate(438, 725) rotate(18)">
+            <path d="M 0 -28 C 11 -12, 11 10, 0 22 C -11 10, -11 -12, 0 -28 Z" />
+            <path d="M -18 -14 C -4 -12, 4 4, -2 20 C -16 12, -22 -2, -18 -14 Z" />
+            <path d="M 18 -14 C 4 -12, -4 4, 2 20 C 16 12, 22 -2, 18 -14 Z" />
+          </g>
+          <path d="M 365 765 C 406 778, 426 762, 414 742 C 392 742, 374 752, 365 765 Z" />
+        </g>
+
+        <!-- SCALLOPED GOLD-TRIMMED MUGHAL ARCH (Right Half meeting Seam at x = 300) -->
+        <g fill="none">
+          <path
+            d="M 532 880 L 532 360 C 532 315, 514 285, 498 260 C 498 232, 476 205, 454 190 C 448 162, 422 138, 394 128 C 382 102, 352 82, 324 74 C 312 64, 305 56, 300 48"
+            stroke="url(#goldFoilRight)"
+            stroke-width="3.2"
+            stroke-linecap="round"
+          />
+          <path
+            d="M 520 880 L 520 365 C 520 322, 504 294, 488 270 C 488 244, 468 218, 446 204 C 440 178, 416 154, 390 144 C 378 120, 350 100, 324 92 C 313 82, 306 74, 300 66"
+            stroke="url(#goldFoilRight)"
+            stroke-width="1.25"
+            opacity="0.88"
+          />
+        </g>
+
+        <!-- Right Metallic Gold Lotus Bud at Top Arch Apex -->
+        <g transform="translate(326, 126) rotate(14)" fill="url(#goldFoilRight)">
+          <path d="M 0 -22 C 8 -10, 8 8, 0 18 C -8 8, -8 -10, 0 -22 Z" />
+          <path d="M -14 -10 C -4 -9, 3 3, -1 16 C -12 10, -17 -1, -14 -10 Z" opacity="0.92" />
+          <path d="M 14 -10 C 4 -9, -3 3, 1 16 C 12 10, 17 -1, 14 -10 Z" opacity="0.92" />
+          <ellipse cx="0" cy="18" rx="10" ry="3" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- GOLDEN SPARKLE PARTICLES OVERLAY ON DOOR GATE -->
+    <canvas id="sparkleCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-20"></canvas>
+
+    <!-- TWISTED CREAM-AND-GOLD SILK CORD ('DORI'), PRETZEL KNOT & 72-STRAND TASSEL ('LATKAN') -->
+    <svg id="tasselRig" class="absolute inset-0 w-full h-full z-30 pointer-events-none" overflow="visible" aria-hidden="true">
+      <defs>
+        <filter id="cordDropShadow" x="-20%" y="-20%" width="140%" height="160%">
+          <feDropShadow dx="0" dy="6" stdDeviation="4.5" flood-color="#3A2518" flood-opacity="0.34" />
+        </filter>
+        <linearGradient id="ferruleGoldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#8C6A23" />
+          <stop offset="28%" stop-color="#DFC078" />
+          <stop offset="52%" stop-color="#FFF2C2" />
+          <stop offset="78%" stop-color="#C59F52" />
+          <stop offset="100%" stop-color="#8C6A23" />
+        </linearGradient>
+        <radialGradient id="silkCapGrad" cx="40%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#FFFFFF" />
+          <stop offset="55%" stop-color="#EFE5D4" />
+          <stop offset="100%" stop-color="#CBB99E" />
+        </radialGradient>
+      </defs>
+
+      <!-- Left Horizontal Twisted Cream-and-Gold Silk Cord -->
+      <g filter="url(#cordDropShadow)">
+        <path id="cordLeftBase" d="" fill="none" stroke="#DFD2BE" stroke-width="9" stroke-linecap="round" />
+        <path id="cordLeftGold" d="" fill="none" stroke="#C59F52" stroke-width="5.5" stroke-dasharray="7 6" stroke-linecap="round" />
+        <path id="cordLeftSilk" d="" fill="none" stroke="#FAF6EF" stroke-width="3.2" stroke-dasharray="7 6" stroke-dashoffset="6.5" stroke-linecap="round" />
+      </g>
+
+      <!-- Right Horizontal Twisted Cream-and-Gold Silk Cord -->
+      <g filter="url(#cordDropShadow)">
+        <path id="cordRightBase" d="" fill="none" stroke="#DFD2BE" stroke-width="9" stroke-linecap="round" />
+        <path id="cordRightGold" d="" fill="none" stroke="#C59F52" stroke-width="5.5" stroke-dasharray="7 6" stroke-linecap="round" />
+        <path id="cordRightSilk" d="" fill="none" stroke="#FAF6EF" stroke-width="3.2" stroke-dasharray="7 6" stroke-dashoffset="6.5" stroke-linecap="round" />
+      </g>
+
+      <!-- Central Intertwined Pretzel/Heart Knot & 72-Strand Silky Flowing Tassel Assembly -->
+      <g id="knotTasselAssembly" filter="url(#cordDropShadow)">
+        <!-- Circular Gold Progress Ring Filling Up as User Drags Downward -->
+        <circle
+          cx="0"
+          cy="0"
+          r="36"
+          fill="none"
+          stroke="rgba(197, 159, 82, 0.24)"
+          stroke-width="2.2"
+        />
+        <circle
+          id="knotProgressRing"
+          cx="0"
+          cy="0"
+          r="36"
+          fill="none"
+          stroke="#C59F52"
+          stroke-width="2.6"
+          stroke-linecap="round"
+          stroke-dasharray="226.2"
+          stroke-dashoffset="226.2"
+          transform="rotate(-90)"
+        />
+
+        <!-- Hanging 72-Strand Silky Flowing Tassel ('Latkan') -->
+        <g id="tasselPendulum">
+          <!-- Braided Suspension Neck -->
+          <path d="M -3.5 14 L -3.5 44 M 3.5 14 L 3.5 44" stroke="#E6D9C3" stroke-width="3.4" stroke-linecap="round" />
+          <path d="M -3.5 16 L 3.5 23 M 3.5 23 L -3.5 30 M -3.5 30 L 3.5 37 M 3.5 37 L -3.5 44" stroke="#C59F52" stroke-width="2.1" stroke-linecap="round" />
+
+          <!-- Silk Crown Bulb -->
+          <path d="M -11 58 C -11 43, 11 43, 11 58 Z" fill="url(#silkCapGrad)" stroke="#D4C5AE" stroke-width="0.8" />
+
+          <!-- Metallic Gold Ferrule Band with Fine Thread Rings -->
+          <rect x="-11.5" y="57" width="23" height="19" rx="2.5" fill="url(#ferruleGoldGrad)" stroke="#9E7B2F" stroke-width="0.7" />
+          <line x1="-11.5" y1="61.5" x2="11.5" y2="61.5" stroke="#8C6A23" stroke-width="0.8" />
+          <line x1="-11.5" y1="66.5" x2="11.5" y2="66.5" stroke="#FFF4CC" stroke-width="0.8" />
+          <line x1="-11.5" y1="71.5" x2="11.5" y2="71.5" stroke="#8C6A23" stroke-width="0.8" />
+
+          <!-- Lush 72-Strand Silky Flowing Skirt Populated via JS -->
+          <g id="tasselSilkThreads"></g>
+        </g>
+
+        <!-- Central 3D Intertwined Pretzel/Heart Silk Knot -->
+        <g id="pretzelKnot">
+          <!-- Left Loop -->
+          <path
+            d="M -2 -8 C -24 -28, -36 4, -14 14 C -2 19, 10 2, 16 -12"
+            fill="none"
+            stroke="#DFD2BE"
+            stroke-width="10.5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M -2 -8 C -24 -28, -36 4, -14 14 C -2 19, 10 2, 16 -12"
+            fill="none"
+            stroke="#C59F52"
+            stroke-width="6"
+            stroke-dasharray="5 5"
+            stroke-linecap="round"
+          />
+          <!-- Right Interlocking Loop -->
+          <path
+            d="M 2 -8 C 24 -28, 36 4, 14 14 C 2 19, -10 2, -16 -12"
+            fill="none"
+            stroke="#EFE6D8"
+            stroke-width="10.5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M 2 -8 C 24 -28, 36 4, 14 14 C 2 19, -10 2, -16 -12"
+            fill="none"
+            stroke="#C59F52"
+            stroke-width="6"
+            stroke-dasharray="5 5"
+            stroke-dashoffset="4"
+            stroke-linecap="round"
+          />
+          <!-- Center Cross Bind -->
+          <ellipse cx="0" cy="2" rx="9" ry="7" fill="#FAF6EF" stroke="#C59F52" stroke-width="1.8" />
+        </g>
+
+        <!-- Generous Pointer/Touch Drag & Tap Hitbox Covering Knot & Tassel -->
+        <rect
+          id="tasselDragHitbox"
+          x="-68"
+          y="-54"
+          width="136"
+          height="275"
+          rx="40"
+          fill="transparent"
+          class="pointer-events-auto cursor-grab active:cursor-grabbing"
+        />
+      </g>
+    </svg>
+
+    <!-- Bottom Center Calligraphic Caption ("You are invited" / "PULL THE TASSEL TO OPEN") -->
+    <div
+      id="coverBottomCaption"
+      class="absolute bottom-7 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 text-center pointer-events-none px-4 w-full max-w-md transition-opacity duration-500"
+    >
+      <div class="inline-block px-7 py-3.5 rounded-2xl bg-courtyard-cream/85 backdrop-blur-md border border-gold-antique/45 shadow-lg">
+        <p data-i18n="coverScriptTitle" class="bilingual font-serif italic text-3xl sm:text-4xl text-gold-bronze leading-tight">
+          You are invited
+        </p>
+        <div class="mt-1.5 flex items-center justify-center gap-1.5 text-wine">
+          <span data-i18n="coverPullSubtitle" class="bilingual font-sans text-[10px] sm:text-[11px] font-semibold tracking-[0.24em] uppercase">
+            PULL THE TASSEL TO OPEN
+          </span>
+          <svg class="w-3.5 h-3.5 text-gold-bronze pull-cue-arrow shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 6. MAIN SUNSET COURTYARD INVITATION CONTENT                           -->
+  <!-- ===================================================================== -->
+  <main id="main-content" class="relative z-10">
+
+    <!-- =================================================================== -->
+    <!-- SECTION 1: HERO & FAMILY ANNOUNCEMENT (max-width: 540px column)     -->
+    <!-- =================================================================== -->
+    <section
+      aria-labelledby="hero-couple-heading"
+      class="w-full min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-24 pb-12 text-center"
+    >
+      <div class="w-full max-w-[540px] mx-auto">
+
+        <!-- Frosted Sunset Cream Hero Card -->
+        <div class="courtyard-cream-card px-6 sm:px-10 py-10 sm:py-12">
+
+          <!-- Arabic Bismillah Calligraphy -->
+          <p class="font-arabic text-3xl sm:text-[38px] text-gold-bronze leading-relaxed mb-4" dir="rtl">
+            بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
+          </p>
+
+          <!-- Gold Hairline Eyebrow -->
+          <p data-i18n="heroEyebrow" class="noora-eyebrow mb-4">
+            WALIMA INVITATION
+          </p>
+
+          <!-- Large Editorial Serif Names: Hamza & Amna -->
+          <h1 id="hero-couple-heading" class="font-serif font-normal text-wine leading-none tracking-tight my-4">
+            <span data-i18n="groomName" class="bilingual block text-5xl sm:text-[64px]">Hamza</span>
+            <span class="block font-serif italic text-3xl sm:text-4xl text-gold-antique my-2">&amp;</span>
+            <span data-i18n="brideName" class="bilingual block text-5xl sm:text-[64px]">Amna</span>
+          </h1>
+
+          <!-- Fine Antique Gold Mughal Arch Hairline Ornament Divider -->
+          <div class="my-6 flex justify-center text-gold-antique" aria-hidden="true">
+            <svg class="w-48 h-11" viewBox="0 0 220 48" fill="none" stroke="currentColor" stroke-width="1.15">
+              <line x1="10" y1="38" x2="76" y2="38" opacity="0.65" />
+              <line x1="144" y1="38" x2="210" y2="38" opacity="0.65" />
+              <path d="M 76 38 L 76 24 C 76 15, 92 10, 110 4 C 128 10, 144 15, 144 24 L 144 38" />
+              <path d="M 86 38 L 86 26 C 86 19, 98 15, 110 10 C 122 15, 134 19, 134 26 L 134 38" opacity="0.55" />
+              <circle cx="110" cy="24" r="2.2" fill="currentColor" />
+            </svg>
+          </div>
+
+          <!-- Two Symmetrical Frosted Sunset Cream Family Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
+            <!-- Groom Family Card -->
+            <div class="courtyard-cream-card px-5 py-5">
+              <p data-i18n="groomCardLabel" class="bilingual font-sans text-[12px] font-semibold tracking-[0.2em] uppercase text-wine">
+                HAMZA
+              </p>
+              <div class="w-8 h-[1px] bg-gold-antique/70 mx-auto my-2.5"></div>
+              <p data-i18n="groomLineage" class="bilingual font-serif text-[18px] text-charcoal-warm leading-snug">
+                Son of <span class="font-semibold text-wine">Mr. &amp; Mrs. Zahid</span>
+              </p>
+            </div>
+
+            <!-- Bride Family Card -->
+            <div class="courtyard-cream-card px-5 py-5">
+              <p data-i18n="brideCardLabel" class="bilingual font-sans text-[12px] font-semibold tracking-[0.2em] uppercase text-wine">
+                AMNA
+              </p>
+              <div class="w-8 h-[1px] bg-gold-antique/70 mx-auto my-2.5"></div>
+              <p data-i18n="brideLineage" class="bilingual font-serif text-[18px] text-charcoal-warm leading-snug">
+                Daughter of <span class="font-semibold text-wine">Mr. &amp; Mrs. Amin</span>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 2: LIVE COUNTDOWN (Frosted Sandstone Band)                  -->
+    <!-- =================================================================== -->
+    <section aria-labelledby="countdown-heading" class="w-full py-8 sm:py-12 px-4 sm:px-6 text-center editorial-reveal">
+      <div class="w-full max-w-[540px] mx-auto courtyard-sandstone-band px-6 sm:px-9 py-10 sm:py-12">
+
+        <p data-i18n="countdownEyebrow" class="noora-eyebrow mb-3">
+          COUNTING DOWN TO
+        </p>
+
+        <h2 id="countdown-heading" data-i18n="countdownHeading" class="bilingual font-serif text-[36px] sm:text-[42px] font-normal text-wine leading-tight">
+          The Walima begins
+        </h2>
+
+        <p data-i18n="countdownSubtitle" class="bilingual font-sans text-[11px] sm:text-[12px] font-semibold tracking-[0.18em] uppercase text-charcoal-soft mt-2 mb-8">
+          Monday, 14 December 2026 &bull; Lahore, Pakistan
+        </p>
+
+        <!-- 4 Arch-Topped Countdown Pillars -->
+        <div class="grid grid-cols-4 gap-2.5 sm:gap-4 max-w-md mx-auto">
+          <div class="countdown-arch-pillar pt-6 pb-4 px-2">
+            <span id="cd-days" class="block font-serif text-3xl sm:text-[42px] font-normal text-wine tabular-nums leading-none">00</span>
+            <span data-i18n="unitDays" class="bilingual block font-sans text-[10px] font-semibold tracking-[0.16em] uppercase text-charcoal-soft mt-2.5">Days</span>
+          </div>
+
+          <div class="countdown-arch-pillar pt-6 pb-4 px-2">
+            <span id="cd-hours" class="block font-serif text-3xl sm:text-[42px] font-normal text-wine tabular-nums leading-none">00</span>
+            <span data-i18n="unitHours" class="bilingual block font-sans text-[10px] font-semibold tracking-[0.16em] uppercase text-charcoal-soft mt-2.5">Hours</span>
+          </div>
+
+          <div class="countdown-arch-pillar pt-6 pb-4 px-2">
+            <span id="cd-minutes" class="block font-serif text-3xl sm:text-[42px] font-normal text-wine tabular-nums leading-none">00</span>
+            <span data-i18n="unitMinutes" class="bilingual block font-sans text-[10px] font-semibold tracking-[0.16em] uppercase text-charcoal-soft mt-2.5">Minutes</span>
+          </div>
+
+          <div class="countdown-arch-pillar pt-6 pb-4 px-2">
+            <span id="cd-seconds" class="block font-serif text-3xl sm:text-[42px] font-normal text-wine tabular-nums leading-none">00</span>
+            <span data-i18n="unitSeconds" class="bilingual block font-sans text-[10px] font-semibold tracking-[0.16em] uppercase text-charcoal-soft mt-2.5">Seconds</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 3: WALIMA RECEPTION CARD                                    -->
+    <!-- =================================================================== -->
+    <section aria-labelledby="celebrations-heading" class="w-full py-8 sm:py-12 px-4 sm:px-6 editorial-reveal">
+      <div class="w-full max-w-[540px] mx-auto">
+
+        <!-- Section Header Card -->
+        <div class="courtyard-cream-card px-6 py-7 text-center mb-6">
+          <p data-i18n="eventsEyebrow" class="noora-eyebrow mb-2.5">
+            WALIMA RECEPTION
+          </p>
+          <h2 id="celebrations-heading" data-i18n="eventsHeading" class="bilingual font-serif text-[38px] sm:text-[44px] font-normal text-wine leading-tight">
+            Dawat-e-Walima
+          </h2>
+        </div>
+
+        <!-- Single Walima Event Card -->
+        <div>
+          <article class="courtyard-cream-card p-7 sm:p-9 text-center">
+            <p data-i18n="walimaTag" class="bilingual font-sans text-[11px] sm:text-[12px] font-semibold tracking-[0.2em] uppercase text-gold-bronze mb-2.5">
+              WALIMA CEREMONY
+            </p>
+
+            <h3 data-i18n="walimaDateTime" class="bilingual font-serif text-2xl sm:text-[30px] font-medium text-wine leading-snug">
+              Monday, 14 December 2026 &bull; 6:00 PM
+            </h3>
+
+            <div class="w-12 h-[1px] bg-gold-antique/60 mx-auto my-4"></div>
+
+            <p data-i18n="walimaVenue" class="bilingual font-sans text-[14px] sm:text-[15px] font-medium text-charcoal-warm leading-relaxed">
+              Meridian Marquee, Sham Nagar, Lahore, Pakistan
+            </p>
+
+            <div class="mt-7 pt-5 border-t border-courtyard-border flex items-center justify-center gap-3">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Meridian+Marquee+Sham+Nagar+Lahore+Pakistan"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex-1 max-w-[165px] py-2.5 px-4 rounded-full bg-wine hover:bg-wine-deep text-courtyard-ivory font-sans text-[11px] font-semibold tracking-[0.15em] uppercase transition-colors flex items-center justify-center gap-1.5 shadow-sm"
+              >
+                <svg class="w-3.5 h-3.5 text-gold-honey shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span data-i18n="btnViewMap" class="bilingual">View Map</span>
+              </a>
+
+              <button
+                type="button"
+                onclick="downloadEventICS('walima')"
+                class="flex-1 max-w-[165px] py-2.5 px-4 rounded-full bg-courtyard-ivory hover:bg-courtyard-sandstone text-wine border border-courtyard-border font-sans text-[11px] font-semibold tracking-[0.15em] uppercase transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <svg class="w-3.5 h-3.5 text-gold-bronze shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span data-i18n="btnSaveDate" class="bilingual">Save Date</span>
+              </button>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 4: CLOSING DEEP WINE BURGUNDY FOOTER                        -->
+    <!-- =================================================================== -->
+    <footer class="w-full courtyard-wine-footer mt-10 py-16 sm:py-20 px-5 sm:px-8 text-center editorial-reveal">
+      <div class="w-full max-w-[540px] mx-auto">
+
+        <!-- Surah An-Naba 78:8 Eyebrow -->
+        <p data-i18n="footerEyebrow" class="noora-eyebrow noora-eyebrow-light mb-4">
+          Surah An-Naba 78:8
+        </p>
+
+        <!-- Arabic Quranic Verse -->
+        <p class="font-arabic text-3xl sm:text-4xl text-gold-honey leading-relaxed mb-2" dir="rtl">
+          وَخَلَقْنَاكُمْ أَزْوَاجًا
+        </p>
+
+        <!-- English/Urdu Translation -->
+        <p data-i18n="footerVerseTranslation" class="bilingual font-serif italic text-xl sm:text-2xl text-courtyard-cream/95 mb-7">
+          &ldquo;And We created you in pairs&rdquo;
+        </p>
+
+        <!-- Embossed Gold Monogram H & A -->
+        <div class="w-16 h-16 mx-auto rounded-full border border-gold-honey/60 bg-courtyard-cream/10 flex items-center justify-center mb-5">
+          <span class="font-serif text-xl tracking-widest text-gold-honey">H &amp; A</span>
+        </div>
+
+        <!-- Warm Closing Message from Zahid & Amin Families -->
+        <p data-i18n="footerClosingMsg" class="bilingual font-serif text-lg sm:text-xl text-courtyard-cream/90 max-w-md mx-auto leading-relaxed">
+          Your presence and prayers at the Walima reception will make our joy complete. Warmly awaited by the families of <span class="text-gold-honey font-semibold">Mr. &amp; Mrs. Zahid</span> and <span class="text-gold-honey font-semibold">Mr. &amp; Mrs. Amin</span>.
+        </p>
+
+        <!-- Two Clean Action Buttons -->
+        <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto">
+          <button
+            id="copy-invite-btn"
+            type="button"
+            class="w-full sm:w-auto flex-1 py-3.5 px-6 rounded-full bg-gold-pill hover:bg-courtyard-ivory active:scale-95 text-wine-deep font-sans text-[11px] font-semibold tracking-[0.16em] uppercase shadow-lg transition-all duration-300 cursor-pointer"
+          >
+            <span data-i18n="btnCopyInvite" class="bilingual">COPY INVITATION TEXT</span>
+          </button>
+
+          <button
+            id="replay-door-btn"
+            type="button"
+            class="w-full sm:w-auto flex-1 py-3.5 px-6 rounded-full bg-transparent hover:bg-courtyard-cream/10 active:scale-95 text-gold-honey border border-gold-honey/60 font-sans text-[11px] font-semibold tracking-[0.16em] uppercase transition-all duration-300 cursor-pointer"
+          >
+            <span data-i18n="btnReplayDoor" class="bilingual">Replay Opening Door</span>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- 7. INTERACTIVE JAVASCRIPT: 3D DOOR & TASSEL PHYSICS, AUDIO, I18N      -->
+  <!-- ===================================================================== -->
+  <script>
+    /* 1. Verified Badshahi Masjid, Lahore High-Resolution Photo Fallback Chain */
+    const badshahiPhotoSources = [
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Badshahi_Mosque_front_picture.jpg/1600px-Badshahi_Mosque_front_picture.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Badshahi_Mosque_Lahore_Pakistan.jpg/1600px-Badshahi_Mosque_Lahore_Pakistan.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/c/c8/Badshahi_Mosque_front_picture.jpg'
+    ];
+    let badshahiSourceIdx = 0;
+
+    window.handleBadshahiPhotoFallback = function (img) {
+      badshahiSourceIdx += 1;
+      if (badshahiSourceIdx < badshahiPhotoSources.length) {
+        img.src = badshahiPhotoSources[badshahiSourceIdx];
+      } else {
+        img.onerror = null;
+        img.style.display = 'none';
+      }
+    };
+
+    (function () {
+      'use strict';
+
+      /* 2. Populate 72 Fine Silk Threads on the Tassel ('Latkan') */
+      function buildTasselThreads() {
+        const group = document.getElementById('tasselSilkThreads');
+        if (!group) return;
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const threadColors = ['#FAF6EF', '#E6D9C3', '#FFFFFF', '#D8C7AC', '#F7F1E7'];
+        const count = 72;
+
+        for (let i = 0; i < count; i++) {
+          const norm = (i / (count - 1)) * 2 - 1;
+          const topX = norm * 10;
+          const bottomX = norm * 32;
+          const bottomY = 188 + (1 - Math.abs(norm)) * 6;
+          const ctrlX = norm * 17;
+          const ctrlY = 132;
+
+          const strand = document.createElementNS(svgNS, 'path');
+          strand.setAttribute('d', `M ${topX.toFixed(2)} 76 Q ${ctrlX.toFixed(2)} ${ctrlY} ${bottomX.toFixed(2)} ${bottomY.toFixed(2)}`);
+          strand.setAttribute('fill', 'none');
+          strand.setAttribute('stroke', threadColors[i % threadColors.length]);
+          strand.setAttribute('stroke-width', i % 3 === 0 ? '0.85' : '0.65');
+          strand.setAttribute('opacity', i % 2 === 0 ? '0.9' : '0.74');
+          group.appendChild(strand);
+        }
+      }
+      buildTasselThreads();
+
+      /* 3. Sleek Toast Confirmation */
+      let toastTimer = null;
+      function showToast(message) {
+        const toast = document.getElementById('editorial-toast');
+        const label = document.getElementById('editorial-toast-text');
+        if (!toast || !label) return;
+
+        label.textContent = message;
+        toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+        toast.classList.add('opacity-100', 'translate-y-0');
+
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+          toast.classList.remove('opacity-100', 'translate-y-0');
+        }, 3000);
+      }
+
+      /* 4. Bilingual English & Urdu Dictionary (Walima Edition) */
+      const i18nDict = {
+        en: {
+          toggleBtn: 'اردو',
+          coverScriptTitle: 'You are invited',
+          coverPullSubtitle: 'PULL THE TASSEL TO OPEN',
+          heroEyebrow: 'WALIMA INVITATION',
+          groomName: 'Hamza',
+          brideName: 'Amna',
+          groomCardLabel: 'HAMZA',
+          groomLineage: 'Son of <span class="font-semibold text-wine">Mr. &amp; Mrs. Zahid</span>',
+          brideCardLabel: 'AMNA',
+          brideLineage: 'Daughter of <span class="font-semibold text-wine">Mr. &amp; Mrs. Amin</span>',
+          countdownEyebrow: 'COUNTING DOWN TO',
+          countdownHeading: 'The Walima begins',
+          countdownSubtitle: 'Monday, 14 December 2026 &bull; Lahore, Pakistan',
+          unitDays: 'Days',
+          unitHours: 'Hours',
+          unitMinutes: 'Minutes',
+          unitSeconds: 'Seconds',
+          eventsEyebrow: 'WALIMA RECEPTION',
+          eventsHeading: 'Dawat-e-Walima',
+          walimaTag: 'WALIMA CEREMONY',
+          walimaDateTime: 'Monday, 14 December 2026 &bull; 6:00 PM',
+          walimaVenue: 'Meridian Marquee, Sham Nagar, Lahore, Pakistan',
+          btnViewMap: 'View Map',
+          btnSaveDate: 'Save Date',
+          footerEyebrow: 'Surah An-Naba 78:8',
+          footerVerseTranslation: '&ldquo;And We created you in pairs&rdquo;',
+          footerClosingMsg: 'Your presence and prayers at the Walima reception will make our joy complete. Warmly awaited by the families of <span class="text-gold-honey font-semibold">Mr. &amp; Mrs. Zahid</span> and <span class="text-gold-honey font-semibold">Mr. &amp; Mrs. Amin</span>.',
+          btnCopyInvite: 'COPY INVITATION TEXT',
+          btnReplayDoor: 'Replay Opening Door',
+          toastCopied: 'Walima invitation copied to clipboard',
+          toastSaved: 'Walima date saved to your calendar'
+        },
+        ur: {
+          toggleBtn: 'EN',
+          coverScriptTitle: 'آپ مدعو ہیں',
+          coverPullSubtitle: 'کھولنے کے لیے ڈوری نیچے کھینچیں',
+          heroEyebrow: 'دعوتِ ولیمہ',
+          groomName: 'حمزہ',
+          brideName: 'آمنہ',
+          groomCardLabel: 'حمزہ',
+          groomLineage: 'فرزندِ <span class="font-semibold text-wine">جناب و محترمہ زاہد صاحب</span>',
+          brideCardLabel: 'آمنہ',
+          brideLineage: 'بنتِ محترم <span class="font-semibold text-wine">جناب و محترمہ امین صاحب</span>',
+          countdownEyebrow: 'ولیمہ کا انتظار',
+          countdownHeading: 'تقریبِ ولیمہ کا آغاز',
+          countdownSubtitle: 'پیر، ۱۴ دسمبر ۲۰۲۶ &bull; لاہور، پاکستان',
+          unitDays: 'دن',
+          unitHours: 'گھنٹے',
+          unitMinutes: 'منٹ',
+          unitSeconds: 'سیکنڈ',
+          eventsEyebrow: 'تقریبِ ولیمہ',
+          eventsHeading: 'دعوتِ ولیمہ',
+          walimaTag: 'استقبالیہ ولیمہ',
+          walimaDateTime: 'پیر، ۱۴ دسمبر ۲۰۲۶ &bull; شام ۶:۰۰ بجے',
+          walimaVenue: 'میریڈین مارکی، شام نگر، لاہور، پاکستان',
+          btnViewMap: 'نقشہ دیکھیں',
+          btnSaveDate: 'تاریخ محفوظ کریں',
+          footerEyebrow: 'سورۃ النباء ۷۸:۸',
+          footerVerseTranslation: '”اور ہم نے تمہیں جوڑا جوڑا پیدا کیا“',
+          footerClosingMsg: 'تقریبِ ولیمہ میں آپ کی تشریف آوری اور دعائیں ہماری خوشیوں کو دوبالا کریں گی۔ منتظر: <span class="text-gold-honey font-semibold">جناب و محترمہ زاہد</span> اور <span class="text-gold-honey font-semibold">جناب و محترمہ امین</span> کے اہلِ خانہ۔',
+          btnCopyInvite: 'دعوت نامہ کاپی کریں',
+          btnReplayDoor: 'دروازہ دوبارہ دیکھیں',
+          toastCopied: 'دعوتِ ولیمہ کاپی ہو گیا ہے',
+          toastSaved: 'ولیمہ کی تاریخ کیلنڈر میں محفوظ ہو گئی'
+        }
+      };
+
+      let activeLang = 'en';
+      const langToggleBtn = document.getElementById('lang-toggle-btn');
+      const langToggleLabel = document.getElementById('lang-toggle-label');
+
+      function setLanguage(lang) {
+        activeLang = lang;
+        const copy = i18nDict[lang];
+        if (!copy) return;
+
+        document.body.classList.toggle('urdu-mode', lang === 'ur');
+        if (langToggleLabel) {
+          langToggleLabel.textContent = copy.toggleBtn;
+          langToggleLabel.className =
+            lang === 'ur'
+              ? 'font-sans text-xs font-semibold tracking-wider'
+              : 'font-arabic text-[15px] leading-none';
+        }
+
+        document.querySelectorAll('[data-i18n]').forEach((node) => {
+          const key = node.getAttribute('data-i18n');
+          if (copy[key] !== undefined) {
+            node.innerHTML = copy[key];
+          }
+        });
+      }
+
+      if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          setLanguage(activeLang === 'en' ? 'ur' : 'en');
+        });
+      }
+
+      /* 5. Web Audio API: Gentle Silk-Rustle & Pentatonic Santoor/Harp Music */
+      let audioCtx = null;
+      let masterGain = null;
+      let ambientLoopTimer = null;
+      let soundEnabled = false;
+
+      function updateSpeakerUI(on) {
+        const iconOn = document.getElementById('icon-sound-on');
+        const iconOff = document.getElementById('icon-sound-off');
+        if (iconOn) iconOn.classList.toggle('hidden', !on);
+        if (iconOff) iconOff.classList.toggle('hidden', on);
+      }
+
+      function initAudioContext() {
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) return null;
+        if (!audioCtx) {
+          audioCtx = new Ctx();
+          masterGain = audioCtx.createGain();
+          masterGain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+          masterGain.connect(audioCtx.destination);
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        return audioCtx;
+      }
+
+      function playSilkRustleAndSantoorChime() {
+        try {
+          const ctx = initAudioContext();
+          if (!ctx) return;
+          const now = ctx.currentTime;
+
+          // Filtered Silk Rustle
+          const dur = 0.52;
+          const frames = Math.floor(ctx.sampleRate * dur);
+          const noiseBuf = ctx.createBuffer(1, frames, ctx.sampleRate);
+          const channel = noiseBuf.getChannelData(0);
+          for (let i = 0; i < frames; i++) {
+            channel[i] = (Math.random() * 2 - 1) * Math.sin((i / frames) * Math.PI);
+          }
+
+          const src = ctx.createBufferSource();
+          src.buffer = noiseBuf;
+
+          const filter = ctx.createBiquadFilter();
+          filter.type = 'bandpass';
+          filter.frequency.setValueAtTime(1850, now);
+          filter.frequency.exponentialRampToValueAtTime(3400, now + dur);
+          filter.Q.setValueAtTime(2.5, now);
+
+          const rustleGain = ctx.createGain();
+          rustleGain.gain.setValueAtTime(0.001, now);
+          rustleGain.gain.linearRampToValueAtTime(0.09, now + 0.08);
+          rustleGain.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+
+          src.connect(filter);
+          filter.connect(rustleGain);
+          rustleGain.connect(ctx.destination);
+          src.start(now);
+
+          // Warm Pentatonic Santoor Chime Arpeggio
+          [587.33, 659.25, 783.99, 987.77, 1174.66].forEach((freq, idx) => {
+            const osc = ctx.createOscillator();
+            const g = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+            g.gain.setValueAtTime(0.0001, now + idx * 0.08);
+            g.gain.exponentialRampToValueAtTime(0.05, now + idx * 0.08 + 0.035);
+            g.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.08 + 2.1);
+            osc.connect(g);
+            g.connect(ctx.destination);
+            osc.start(now + idx * 0.08);
+            osc.stop(now + idx * 0.08 + 2.2);
+          });
+        } catch (e) {
+          // Ignore if blocked prior to gesture
+        }
+      }
+
+      function pluckPentatonicSantoorNote() {
+        if (!audioCtx || !masterGain || !soundEnabled) return;
+        const now = audioCtx.currentTime;
+        const pentatonicNotes = [293.66, 329.63, 392.0, 440.0, 523.25, 587.33, 659.25, 783.99];
+        const freq = pentatonicNotes[Math.floor(Math.random() * pentatonicNotes.length)];
+
+        const fundamental = audioCtx.createOscillator();
+        const harmonic = audioCtx.createOscillator();
+        const env = audioCtx.createGain();
+
+        fundamental.type = 'sine';
+        fundamental.frequency.setValueAtTime(freq, now);
+
+        harmonic.type = 'triangle';
+        harmonic.frequency.setValueAtTime(freq * 2, now);
+
+        env.gain.setValueAtTime(0.0001, now);
+        env.gain.exponentialRampToValueAtTime(0.045, now + 0.05);
+        env.gain.exponentialRampToValueAtTime(0.0001, now + 3.0);
+
+        fundamental.connect(env);
+        harmonic.connect(env);
+        env.connect(masterGain);
+
+        fundamental.start(now);
+        harmonic.start(now);
+        fundamental.stop(now + 3.1);
+        harmonic.stop(now + 3.1);
+      }
+
+      function startAmbientMusic() {
+        try {
+          const ctx = initAudioContext();
+          if (!ctx || !masterGain) return;
+
+          if (!ambientLoopTimer) {
+            const lowpass = ctx.createBiquadFilter();
+            lowpass.type = 'lowpass';
+            lowpass.frequency.setValueAtTime(440, ctx.currentTime);
+            lowpass.connect(masterGain);
+
+            [146.83, 220.0].forEach((droneFreq) => {
+              const osc = ctx.createOscillator();
+              const g = ctx.createGain();
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(droneFreq, ctx.currentTime);
+              g.gain.setValueAtTime(0.016, ctx.currentTime);
+              osc.connect(g);
+              g.connect(lowpass);
+              osc.start();
+            });
+
+            ambientLoopTimer = setInterval(pluckPentatonicSantoorNote, 2300);
+          }
+
+          masterGain.gain.cancelScheduledValues(ctx.currentTime);
+          masterGain.gain.exponentialRampToValueAtTime(0.48, ctx.currentTime + 0.8);
+          soundEnabled = true;
+          updateSpeakerUI(true);
+          pluckPentatonicSantoorNote();
+        } catch (err) {
+          console.error('Ambient audio error:', err);
+        }
+      }
+
+      function stopAmbientMusic() {
+        if (audioCtx && masterGain) {
+          masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
+          masterGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.4);
+        }
+        soundEnabled = false;
+        updateSpeakerUI(false);
+      }
+
+      const soundToggleBtn = document.getElementById('sound-toggle-btn');
+      if (soundToggleBtn) {
+        soundToggleBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (soundEnabled) {
+            stopAmbientMusic();
+          } else {
+            startAmbientMusic();
+          }
+        });
+      }
+
+      /* 6. Golden Sparkle Particles & Drifting Blush/Gold/Cream Oval Petals */
+      const sparkleCanvas = document.getElementById('sparkleCanvas');
+      const sparkleCtx = sparkleCanvas ? sparkleCanvas.getContext('2d') : null;
+      let goldSparkles = [];
+
+      function resizeSparkles() {
+        if (!sparkleCanvas) return;
+        sparkleCanvas.width = window.innerWidth;
+        sparkleCanvas.height = window.innerHeight;
+      }
+
+      function spawnGoldSparkles(cx, cy, count, velocityMult) {
+        const goldColors = ['#FFF6D6', '#E6C579', '#C59F52', '#FFFFFF'];
+        for (let i = 0; i < count; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = (Math.random() * 2.4 + 0.6) * (velocityMult || 1);
+          goldSparkles.push({
+            x: cx + (Math.random() - 0.5) * 34,
+            y: cy + (Math.random() - 0.5) * 26,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 0.3,
+            r: Math.random() * 2.5 + 1.4,
+            alpha: 1,
+            decay: Math.random() * 0.02 + 0.015,
+            color: goldColors[i % goldColors.length]
+          });
+        }
+      }
+
+      function animateSparkles() {
+        if (sparkleCtx && sparkleCanvas) {
+          sparkleCtx.clearRect(0, 0, sparkleCanvas.width, sparkleCanvas.height);
+          for (let i = goldSparkles.length - 1; i >= 0; i--) {
+            const p = goldSparkles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.03;
+            p.alpha -= p.decay;
+
+            if (p.alpha <= 0) {
+              goldSparkles.splice(i, 1);
+              continue;
+            }
+
+            sparkleCtx.save();
+            sparkleCtx.globalAlpha = Math.max(0, p.alpha);
+            sparkleCtx.fillStyle = p.color;
+            sparkleCtx.shadowBlur = 8;
+            sparkleCtx.shadowColor = '#E6C579';
+
+            sparkleCtx.beginPath();
+            sparkleCtx.moveTo(p.x, p.y - p.r * 1.6);
+            sparkleCtx.lineTo(p.x + p.r * 0.45, p.y - p.r * 0.45);
+            sparkleCtx.lineTo(p.x + p.r * 1.6, p.y);
+            sparkleCtx.lineTo(p.x + p.r * 0.45, p.y + p.r * 0.45);
+            sparkleCtx.lineTo(p.x, p.y + p.r * 1.6);
+            sparkleCtx.lineTo(p.x - p.r * 0.45, p.y + p.r * 0.45);
+            sparkleCtx.lineTo(p.x - p.r * 1.6, p.y);
+            sparkleCtx.lineTo(p.x - p.r * 0.45, p.y - p.r * 0.45);
+            sparkleCtx.closePath();
+            sparkleCtx.fill();
+            sparkleCtx.restore();
+          }
+        }
+        requestAnimationFrame(animateSparkles);
+      }
+
+      /* Drifting Oval Confetti Petals (#DFACA3 Blush Rose, #E6C579 Warm Gold, #EFE0C6 Soft Cream) */
+      const petalCanvas = document.getElementById('confetti-petals-canvas');
+      const petalCtx = petalCanvas ? petalCanvas.getContext('2d') : null;
+      let ovalPetals = [];
+
+      function resizePetals() {
+        if (!petalCanvas) return;
+        petalCanvas.width = window.innerWidth;
+        petalCanvas.height = window.innerHeight;
+      }
+
+      function initOvalPetals(count) {
+        if (!petalCanvas) return;
+        const colors = [
+          'rgba(223, 172, 163, 0.58)',
+          'rgba(230, 197, 121, 0.60)',
+          'rgba(239, 224, 198, 0.54)'
+        ];
+        ovalPetals = [];
+        for (let i = 0; i < count; i++) {
+          ovalPetals.push({
+            x: Math.random() * petalCanvas.width,
+            y: Math.random() * petalCanvas.height,
+            rx: Math.random() * 1.4 + 4.8,
+            ry: Math.random() * 0.9 + 2.6,
+            vy: Math.random() * 0.45 + 0.25,
+            vx: (Math.random() - 0.5) * 0.28,
+            rot: Math.random() * Math.PI * 2,
+            rotSpd: (Math.random() - 0.5) * 0.02,
+            phase: Math.random() * Math.PI * 2,
+            color: colors[i % colors.length]
+          });
+        }
+      }
+
+      function burstCelebrationPetals(cx, cy) {
+        if (!petalCanvas) return;
+        const burstColors = [
+          'rgba(223, 172, 163, 0.85)',
+          'rgba(230, 197, 121, 0.88)',
+          'rgba(239, 224, 198, 0.82)'
+        ];
+        for (let i = 0; i < 24; i++) {
+          ovalPetals.push({
+            x: cx + (Math.random() - 0.5) * 110,
+            y: cy + (Math.random() - 0.5) * 80,
+            rx: Math.random() * 1.4 + 4.8,
+            ry: Math.random() * 0.9 + 2.6,
+            vy: Math.random() * 0.85 + 0.35,
+            vx: (Math.random() - 0.5) * 2.1,
+            rot: Math.random() * Math.PI * 2,
+            rotSpd: (Math.random() - 0.5) * 0.04,
+            phase: Math.random() * Math.PI * 2,
+            color: burstColors[i % burstColors.length],
+            ephemeral: true
+          });
+        }
+      }
+
+      function renderOvalPetals() {
+        if (petalCtx && petalCanvas) {
+          petalCtx.clearRect(0, 0, petalCanvas.width, petalCanvas.height);
+          for (let i = ovalPetals.length - 1; i >= 0; i--) {
+            const p = ovalPetals[i];
+            p.phase += 0.015;
+            p.y += p.vy;
+            p.x += p.vx + Math.sin(p.phase) * 0.35;
+            p.rot += p.rotSpd;
+
+            if (p.y > petalCanvas.height + 20) {
+              if (p.ephemeral) {
+                ovalPetals.splice(i, 1);
+                continue;
+              }
+              p.y = -20;
+              p.x = Math.random() * petalCanvas.width;
+            }
+            if (p.x > petalCanvas.width + 20) p.x = -20;
+            if (p.x < -20) p.x = petalCanvas.width + 20;
+
+            petalCtx.save();
+            petalCtx.translate(p.x, p.y);
+            petalCtx.rotate(p.rot);
+            petalCtx.beginPath();
+            petalCtx.ellipse(0, 0, p.rx, p.ry, 0, 0, Math.PI * 2);
+            petalCtx.fillStyle = p.color;
+            petalCtx.fill();
+            petalCtx.restore();
+          }
+        }
+        requestAnimationFrame(renderOvalPetals);
+      }
+
+      /* 7. 3D Embossed Mughal Double-Door & Pull-Down Silky Tassel ('Dori') Interaction */
+      const doorGate = document.getElementById('doorGate');
+      const tasselRig = document.getElementById('tasselRig');
+      const knotTasselAssembly = document.getElementById('knotTasselAssembly');
+      const pretzelKnot = document.getElementById('pretzelKnot');
+      const progressRing = document.getElementById('knotProgressRing');
+      const dragHitbox = document.getElementById('tasselDragHitbox');
+      const bottomCaption = document.getElementById('coverBottomCaption');
+
+      const cordLeftBase = document.getElementById('cordLeftBase');
+      const cordLeftGold = document.getElementById('cordLeftGold');
+      const cordLeftSilk = document.getElementById('cordLeftSilk');
+      const cordRightBase = document.getElementById('cordRightBase');
+      const cordRightGold = document.getElementById('cordRightGold');
+      const cordRightSilk = document.getElementById('cordRightSilk');
+
+      const RELEASE_THRESHOLD = 45;
+      const MAX_PULL_DY = 140;
+      const PROGRESS_CIRCUMFERENCE = 226.2;
+
+      let gateW = window.innerWidth;
+      let gateH = window.innerHeight;
+      let cordAnchorY = gateH * 0.48;
+      let pullDX = 0;
+      let pullDY = 0;
+      let isPulling = false;
+      let startPtrX = 0;
+      let startPtrY = 0;
+      let movedDuringDrag = false;
+      let doorsUnlocked = false;
+      let springTimer = null;
+
+      function setCordPathD(list, dStr) {
+        list.forEach((el) => {
+          if (el) el.setAttribute('d', dStr);
+        });
+      }
+
+      function updateTasselPhysics(dx, dy, retractRatio) {
+        if (!tasselRig) return;
+        gateW = window.innerWidth;
+        gateH = window.innerHeight;
+        cordAnchorY = gateH * 0.48;
+
+        tasselRig.setAttribute('viewBox', `0 0 ${gateW} ${gateH}`);
+
+        const midX = gateW * 0.5;
+        const knotX = midX + dx;
+        const knotY = cordAnchorY + dy;
+
+        if (progressRing) {
+          const ratio = Math.max(0, Math.min(1, dy / RELEASE_THRESHOLD));
+          progressRing.setAttribute('stroke-dashoffset', String(PROGRESS_CIRCUMFERENCE * (1 - ratio)));
+        }
+
+        if (retractRatio > 0) {
+          const leftTipX = Math.max(-24, midX * (1 - retractRatio));
+          const rightTipX = Math.min(gateW + 24, midX + midX * retractRatio);
+          const waveY = cordAnchorY + Math.sin(retractRatio * Math.PI * 1.4) * 22;
+
+          const leftCurve = `M -10 ${cordAnchorY} Q ${leftTipX * 0.5} ${waveY} ${leftTipX} ${cordAnchorY + retractRatio * 14}`;
+          const rightCurve = `M ${rightTipX} ${cordAnchorY + retractRatio * 14} Q ${rightTipX + (gateW - rightTipX) * 0.5} ${waveY} ${gateW + 10} ${cordAnchorY}`;
+
+          setCordPathD([cordLeftBase, cordLeftGold, cordLeftSilk], leftCurve);
+          setCordPathD([cordRightBase, cordRightGold, cordRightSilk], rightCurve);
+        } else {
+          const leftCtrlX = knotX * 0.48;
+          const leftCtrlY = cordAnchorY + dy * 0.35;
+          const rightCtrlX = knotX + (gateW - knotX) * 0.52;
+          const rightCtrlY = cordAnchorY + dy * 0.35;
+
+          const leftCurve = `M -10 ${cordAnchorY} Q ${leftCtrlX} ${leftCtrlY} ${knotX} ${knotY}`;
+          const rightCurve = `M ${knotX} ${knotY} Q ${rightCtrlX} ${rightCtrlY} ${gateW + 10} ${cordAnchorY}`;
+
+          setCordPathD([cordLeftBase, cordLeftGold, cordLeftSilk], leftCurve);
+          setCordPathD([cordRightBase, cordRightGold, cordRightSilk], rightCurve);
+        }
+
+        if (knotTasselAssembly) {
+          knotTasselAssembly.setAttribute('transform', `translate(${knotX}, ${knotY})`);
+        }
+      }
+
+      function activateScrollReveals() {
+        const items = document.querySelectorAll('.editorial-reveal');
+        if ('IntersectionObserver' in window) {
+          const obs = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  obs.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.1 }
+          );
+          items.forEach((item) => obs.observe(item));
+        } else {
+          items.forEach((item) => item.classList.add('is-visible'));
+        }
+      }
+
+      function untieAndOpenDoors() {
+        if (doorsUnlocked) return;
+        doorsUnlocked = true;
+        if (springTimer) cancelAnimationFrame(springTimer);
+
+        playSilkRustleAndSantoorChime();
+        startAmbientMusic();
+
+        const midX = gateW * 0.5;
+        const currentKnotY = cordAnchorY + pullDY;
+        spawnGoldSparkles(midX, currentKnotY, 44, 1.45);
+        burstCelebrationPetals(midX, currentKnotY);
+
+        if (bottomCaption) bottomCaption.style.opacity = '0';
+
+        const startT = performance.now();
+        const untieMs = 380;
+
+        function stepUntie(now) {
+          const progress = Math.min(1, (now - startT) / untieMs);
+          const ease = 1 - Math.pow(1 - progress, 3);
+
+          updateTasselPhysics(pullDX * (1 - ease), pullDY + ease * 60, ease);
+
+          if (pretzelKnot) {
+            pretzelKnot.style.opacity = String(1 - ease);
+            pretzelKnot.setAttribute('transform', `scale(${1 + ease * 0.4})`);
+          }
+          if (knotTasselAssembly) {
+            knotTasselAssembly.style.opacity = String(Math.max(0, 1 - progress * 1.35));
+          }
+          if (progress > 0.3 && doorGate) {
+            doorGate.classList.add('seam-glow');
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(stepUntie);
+          } else {
+            if (doorGate) {
+              doorGate.classList.add('doors-open');
+            }
+            document.body.classList.remove('gate-locked');
+            activateScrollReveals();
+
+            setTimeout(() => {
+              if (doorGate) doorGate.classList.add('gate-fading');
+            }, 900);
+
+            setTimeout(() => {
+              if (doorGate) doorGate.style.display = 'none';
+            }, 1550);
+          }
+        }
+
+        requestAnimationFrame(stepUntie);
+      }
+
+      function snapBackElastic() {
+        if (springTimer) cancelAnimationFrame(springTimer);
+        let vy = 0;
+        let vx = 0;
+        const k = 0.16;
+        const damp = 0.72;
+
+        function tick() {
+          vy = (vy - pullDY * k) * damp;
+          vx = (vx - pullDX * k) * damp;
+          pullDY += vy;
+          pullDX += vx;
+          updateTasselPhysics(pullDX, pullDY, 0);
+
+          if (Math.abs(pullDY) < 0.3 && Math.abs(vy) < 0.3) {
+            pullDY = 0;
+            pullDX = 0;
+            updateTasselPhysics(0, 0, 0);
+            return;
+          }
+          springTimer = requestAnimationFrame(tick);
+        }
+
+        springTimer = requestAnimationFrame(tick);
+      }
+
+      function animateAutoPullAndOpen() {
+        if (doorsUnlocked) return;
+        const fromY = pullDY;
+        const toY = 125;
+        const t0 = performance.now();
+        const duration = 420;
+
+        function stepPull(now) {
+          const p = Math.min(1, (now - t0) / duration);
+          const ease = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+          pullDY = fromY + (toY - fromY) * ease;
+          updateTasselPhysics(0, pullDY, 0);
+
+          if (Math.random() < 0.5) {
+            spawnGoldSparkles(gateW * 0.5, cordAnchorY + pullDY, 2, 0.8);
+          }
+
+          if (p < 1) {
+            requestAnimationFrame(stepPull);
+          } else {
+            untieAndOpenDoors();
+          }
+        }
+
+        requestAnimationFrame(stepPull);
+      }
+
+      if (dragHitbox) {
+        dragHitbox.addEventListener('pointerdown', (e) => {
+          if (doorsUnlocked) return;
+          isPulling = true;
+          movedDuringDrag = false;
+          startPtrX = e.clientX;
+          startPtrY = e.clientY;
+          if (springTimer) cancelAnimationFrame(springTimer);
+          if (knotTasselAssembly) knotTasselAssembly.classList.add('tassel-dragging');
+          dragHitbox.setPointerCapture(e.pointerId);
+          spawnGoldSparkles(gateW * 0.5, cordAnchorY, 8, 0.85);
+        });
+
+        dragHitbox.addEventListener('pointermove', (e) => {
+          if (!isPulling || doorsUnlocked) return;
+          const dx = e.clientX - startPtrX;
+          const dy = e.clientY - startPtrY;
+
+          if (Math.abs(dy) > 5 || Math.abs(dx) > 5) {
+            movedDuringDrag = true;
+          }
+
+          pullDY = Math.max(-8, Math.min(MAX_PULL_DY, dy * 0.95));
+          pullDX = Math.max(-26, Math.min(26, dx * 0.22));
+          updateTasselPhysics(pullDX, pullDY, 0);
+
+          if (pullDY > 8 && Math.random() < 0.5) {
+            spawnGoldSparkles(gateW * 0.5 + pullDX, cordAnchorY + pullDY, 2, 0.75);
+          }
+        });
+
+        const endPointerGesture = () => {
+          if (!isPulling) return;
+          isPulling = false;
+          if (knotTasselAssembly) knotTasselAssembly.classList.remove('tassel-dragging');
+
+          if (!movedDuringDrag) {
+            animateAutoPullAndOpen();
+          } else if (pullDY >= RELEASE_THRESHOLD) {
+            untieAndOpenDoors();
+          } else {
+            snapBackElastic();
+          }
+        };
+
+        dragHitbox.addEventListener('pointerup', endPointerGesture);
+        dragHitbox.addEventListener('pointercancel', endPointerGesture);
+      }
+
+      /* Tapping/Clicking Anywhere on the Doors Opens Smoothly */
+      if (doorGate) {
+        doorGate.addEventListener('click', (e) => {
+          if (doorsUnlocked || isPulling || movedDuringDrag) return;
+          if (e.target === dragHitbox) return;
+          animateAutoPullAndOpen();
+        });
+      }
+
+      /* Replay Opening Door Button in Footer */
+      const replayDoorBtn = document.getElementById('replay-door-btn');
+      if (replayDoorBtn) {
+        replayDoorBtn.addEventListener('click', () => {
+          if (!doorGate) return;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          doorsUnlocked = false;
+          pullDX = 0;
+          pullDY = 0;
+
+          if (pretzelKnot) {
+            pretzelKnot.style.opacity = '1';
+            pretzelKnot.setAttribute('transform', 'scale(1)');
+          }
+          if (knotTasselAssembly) {
+            knotTasselAssembly.style.opacity = '1';
+          }
+          if (bottomCaption) {
+            bottomCaption.style.opacity = '1';
+          }
+
+          doorGate.style.display = 'flex';
+          doorGate.classList.remove('gate-fading', 'seam-glow');
+          void doorGate.offsetWidth;
+          doorGate.classList.remove('doors-open');
+          document.body.classList.add('gate-locked');
+          resizeSparkles();
+          updateTasselPhysics(0, 0, 0);
+        });
+      }
+
+      /* 8. Live Countdown to Walima: Monday, December 14, 2026 at 18:00:00 PKT (+05:00) */
+      const walimaEpoch = new Date('2026-12-14T18:00:00+05:00').getTime();
+
+      function updateCountdown() {
+        const remaining = walimaEpoch - Date.now();
+        const dEl = document.getElementById('cd-days');
+        const hEl = document.getElementById('cd-hours');
+        const mEl = document.getElementById('cd-minutes');
+        const sEl = document.getElementById('cd-seconds');
+        if (!dEl || !hEl || !mEl || !sEl) return;
+
+        if (remaining <= 0) {
+          dEl.textContent = '00';
+          hEl.textContent = '00';
+          mEl.textContent = '00';
+          sEl.textContent = '00';
+          return;
+        }
+
+        const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((remaining / (1000 * 60)) % 60);
+        const secs = Math.floor((remaining / 1000) % 60);
+
+        dEl.textContent = String(days).padStart(2, '0');
+        hEl.textContent = String(hours).padStart(2, '0');
+        mEl.textContent = String(mins).padStart(2, '0');
+        sEl.textContent = String(secs).padStart(2, '0');
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      /* 9. Valid .ICS Calendar File Download ('Save Date') for Walima */
+      const icsEvents = {
+        walima: {
+          filename: 'Hamza-Amna-Walima.ics',
+          summary: 'Hamza & Amna — Walima Reception',
+          location: 'Meridian Marquee, Sham Nagar, Lahore, Pakistan',
+          description: 'Walima Invitation: Hamza (Son of Mr. & Mrs. Zahid) & Amna (Daughter of Mr. & Mrs. Amin) — Dawat-e-Walima at Meridian Marquee, Sham Nagar, Lahore.',
+          dtStart: '20261214T180000',
+          dtEnd: '20261214T220000'
+        }
+      };
+
+      window.downloadEventICS = function (key) {
+        try {
+          const ev = icsEvents[key];
+          if (!ev) return;
+
+          const icsPayload = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//Hamza & Amna//Sunset Courtyard Walima//EN',
+            'CALSCALE:GREGORIAN',
+            'BEGIN:VEVENT',
+            `UID:${key}-hamza-amna-2026@sunsetcourtyard`,
+            'DTSTAMP:20261123T163000Z',
+            `DTSTART;TZID=Asia/Karachi:${ev.dtStart}`,
+            `DTEND;TZID=Asia/Karachi:${ev.dtEnd}`,
+            `SUMMARY:${ev.summary}`,
+            `LOCATION:${ev.location}`,
+            `DESCRIPTION:${ev.description}`,
+            'END:VEVENT',
+            'END:VCALENDAR'
+          ].join('\r\n');
+
+          const blob = new Blob([icsPayload], { type: 'text/calendar;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = ev.filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+
+          showToast(i18nDict[activeLang].toastSaved);
+        } catch (err) {
+          console.error('Calendar download error:', err);
+        }
+      };
+
+      /* 10. Copy Walima Invitation Text to Clipboard */
+      const plainInvitationText = `بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
+WALIMA INVITATION
+
+HAMZA
+(Son of Mr. & Mrs. Zahid)
+&
+AMNA
+(Daughter of Mr. & Mrs. Amin)
+
+cordially invite you to grace their Dawat-e-Walima in Lahore, Pakistan:
+
+WALIMA RECEPTION
+Monday, 14 December 2026 • 6:00 PM
+Meridian Marquee, Sham Nagar, Lahore, Pakistan
+https://www.google.com/maps/search/?api=1&query=Meridian+Marquee+Sham+Nagar+Lahore+Pakistan
+
+"And We created you in pairs" — Surah An-Naba 78:8
+Warmly awaited by the families of Mr. & Mrs. Zahid and Mr. & Mrs. Amin.`;
+
+      const copyInviteBtn = document.getElementById('copy-invite-btn');
+      if (copyInviteBtn) {
+        copyInviteBtn.addEventListener('click', () => {
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = plainInvitationText;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            ta.setSelectionRange(0, 99999);
+            const copied = document.execCommand('copy');
+            document.body.removeChild(ta);
+            if (copied) {
+              showToast(i18nDict[activeLang].toastCopied);
+            }
+          } catch (err) {
+            console.error('Copy failed:', err);
+          }
+        });
+      }
+
+      /* 11. Initialize Canvases & Physics on Load & Resize */
+      window.addEventListener('resize', () => {
+        resizePetals();
+        resizeSparkles();
+        initOvalPetals(window.innerWidth < 640 ? 18 : 26);
+        if (!doorsUnlocked) {
+          updateTasselPhysics(pullDX, pullDY, 0);
+        }
+      });
+
+      window.addEventListener('load', () => {
+        resizePetals();
+        resizeSparkles();
+        initOvalPetals(window.innerWidth < 640 ? 18 : 26);
+        renderOvalPetals();
+        animateSparkles();
+        updateTasselPhysics(0, 0, 0);
+      });
+    })();
+  </script>
+</body>
+</html>
